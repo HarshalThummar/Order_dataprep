@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dynamic parameter input for Order data creation</title>
+
+        <!-- attach jquery file -->
+        <script type="text/javascript" src="jquery.js"></script> 
+    </head>
+    <body>
+
+        <!-- Create element wrapper-->
+        <div class="element-wrapper">
+        
+            <!-- Create row element for duplicate or clone-->
+            <div class = "row" style="display: none">
+        
+                <!-- Create input feilds-->
+                <input type="text" placeholder="Your Name" />
+        
+                <!-- Create a button to remove row-->
+                <button class="btn-remove-row">Remove row </button>
+        
+            </div> 
+        </div>
+        
+        <button class="btn-add-row">Add New row</button>
+
+        <button class="submit">Submit</button>
+        <!-- Javascript code for clone and remove input fields row-->
+        <script type="text/javascript">
+            $(document).on("click", ".btn-add-row", function(){
+                var row = $(".row").eq(0).clone().show();
+                $(".element-wrapper").append(row);
+            });  
+            
+            
+            /* remove row*/
+            $(document).on("click", ".btn-remove-row", function(){
+                var index = $(".btn-remove-row").index(this);
+                
+                $(".row").eq(index).remove();
+
+            });
+        
+
+            $(document).on("click", ".submit", function(){
+                var i;
+                
+                for(i=0; i< 5; i++){
+                    console.log(i);
+                    var row = $(".row").eq(0).clone().show();
+                    $(".element-wrapper").append(row);
+                };
+            });
+               
+        </script>
+
+        
+
+    </body>
+</html>
